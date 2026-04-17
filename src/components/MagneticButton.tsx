@@ -4,17 +4,14 @@ import { useRef } from "react";
 import { motion, useSpring } from "framer-motion";
 import styles from "./MagneticButton.module.css";
 
-export default function MagneticButton({ 
-  children, 
-  className = "", 
-  onClick,
-  variant = "gold"
-}: { 
-  children: React.ReactNode, 
-  className?: string,
-  onClick?: () => void,
-  variant?: string
-}) {
+interface MagneticButtonProps {
+  children: React.ReactNode;
+  className?: string;
+  onClick?: () => void;
+  variant?: string;
+}
+
+export default function MagneticButton({ children, className = "", onClick, variant }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   
   const x = useSpring(0, { stiffness: 150, damping: 15, mass: 0.1 });

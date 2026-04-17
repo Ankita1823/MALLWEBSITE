@@ -22,8 +22,8 @@ export default function Counter({ value, duration = 2, decimals = 0, suffix = ""
 
     const controls = animate(0, value, {
       duration,
-      onUpdate(v) {
-        node.textContent = v.toLocaleString(undefined, {
+      onUpdate(value) {
+        node.textContent = value.toLocaleString(undefined, {
           minimumFractionDigits: decimals,
           maximumFractionDigits: decimals,
         });

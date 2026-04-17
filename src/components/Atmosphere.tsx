@@ -24,11 +24,11 @@ export default function Atmosphere() {
       ],
       duration: 20 + Math.random() * 10
     }));
-    
-    setTimeout(() => {
+
+    requestAnimationFrame(() => {
       setOrbs(generatedOrbs);
       setMounted(true);
-    }, 0);
+    });
   }, []);
 
   if (!mounted) return <div className={styles.atmosphere} />;

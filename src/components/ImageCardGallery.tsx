@@ -58,7 +58,13 @@ export default function ImageCardGallery() {
           >
             <div className={styles.cardInner}>
               <div className={styles.imageWrapper}>
-                <Image src={item.img} alt={item.title} fill className={styles.image} sizes="(max-width: 768px) 100vw, 50vw" />
+                <Image 
+                  src={item.img} 
+                  alt={item.title} 
+                  fill 
+                  className={styles.image} 
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
               </div>
               <div className={styles.overlay} />
               <div className={styles.content}>

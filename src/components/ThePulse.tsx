@@ -21,10 +21,10 @@ export default function ThePulse() {
     const generatedBars = [...Array(20)].map(() => ({
       initialHeight: `${20 + Math.random() * 80}%`
     }));
-    
-    setTimeout(() => {
+
+    requestAnimationFrame(() => {
       setChartBars(generatedBars);
-    }, 0);
+    });
 
     return () => clearInterval(interval);
   }, []);

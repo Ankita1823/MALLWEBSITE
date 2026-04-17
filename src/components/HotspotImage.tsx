@@ -24,7 +24,13 @@ export default function HotspotImage({ src, alt, hotspots }: HotspotImageProps) 
 
   return (
     <div className={styles.container}>
-      <Image src={src} className={styles.image} alt={alt} fill sizes="100vw" />
+      <Image 
+        src={src} 
+        alt={alt} 
+        fill 
+        className={styles.image} 
+        sizes="(max-width: 1400px) 100vw, 1400px"
+      />
       <div className={styles.overlay} />
 
       {hotspots.map((h, i) => (

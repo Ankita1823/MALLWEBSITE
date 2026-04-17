@@ -4,6 +4,12 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./AccessModal.module.css";
 
+declare global {
+  interface Window {
+    toggleAccessModal: () => void;
+  }
+}
+
 export default function AccessModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -22,8 +28,7 @@ export default function AccessModal() {
   // Expose toggle to window for easy access from other components
   useEffect(() => {
     if (typeof window !== "undefined") {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).toggleAccessModal = handleToggle;
+      window.toggleAccessModal = handleToggle;
     }
   }, [handleToggle]);
 
