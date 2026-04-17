@@ -1,0 +1,145 @@
+.container {
+  background: rgba(15, 15, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 32px;
+  margin-top: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+}
+
+.liveTag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: #fff;
+}
+
+.blink {
+  width: 6px;
+  height: 6px;
+  background: #ff3b3b;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff3b3b;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.location {
+  font-size: 11px;
+  color: var(--white-60);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+}
+
+.mainBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.counter {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 200;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.subtext {
+  font-size: 12px;
+  color: var(--white-60);
+  margin-bottom: 24px;
+}
+
+.chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 60px;
+  width: 100%;
+}
+
+.bar {
+  flex: 1;
+  background: rgba(201, 168, 76, 0.2);
+  border-top: 1px solid var(--gold);
+}
+
+.sideCol {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.statBox {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.value {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 300;
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+.progressTrack {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--gold);
+}
+
+.dots {
+  display: flex;
+  gap: 4px;
+}
+
+.dotActive {
+  width: 12px;
+  height: 3px;
+  background: var(--gold);
+}
+
+.footer {
+  margin-top: 32px;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.05em;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}

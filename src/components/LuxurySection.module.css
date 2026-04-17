@@ -1,0 +1,318 @@
+.section {
+  background: #08080c;
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bgImage {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1555529669-2269763671c0?auto=format&fit=crop&q=80&w=1400');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  filter: blur(20px) grayscale(100%);
+  transform: scale(1.1);
+}
+
+.videoBg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(8,8,12,0.95) 0%, rgba(8,8,12,0.4) 50%, rgba(8,8,12,0.95) 100%);
+  z-index: 1;
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 80% 50%, rgba(40,25,8,0.6) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 10% 80%, rgba(20,10,40,0.5) 0%, transparent 55%);
+  z-index: 2;
+}
+
+.goldShimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%, transparent 100%);
+  opacity: 0.4;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 5vw, 80px);
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+.left {
+  position: relative;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.headline {
+  line-height: 1.0;
+}
+
+.pillars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+.pillar {
+  padding: 8px 18px;
+  background: rgba(201,168,76,0.08);
+  border: 1px solid rgba(201,168,76,0.2);
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--gold-light);
+  transition: all 0.4s var(--ease-luxury);
+}
+
+.pillar:hover {
+  background: rgba(201,168,76,0.15);
+  border-color: var(--gold);
+  box-shadow: 0 0 15px rgba(201, 168, 76, 0.3);
+  transform: translateY(-2px);
+}
+
+.cta {
+  margin-top: 0;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.maisonGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 1400px) {
+  .maisonGrid {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .maisonGrid {
+    grid-template-columns: 1fr;
+  }
+  .size_large { grid-column: span 1; }
+}
+
+.maisonCard {
+  position: relative;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.01);
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.7s var(--ease-luxury);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 300px;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.02);
+}
+
+.maisonCard::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+  transform: skewX(-20deg);
+  transition: none;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.maisonCard:hover::after {
+  left: 150%;
+  transition: left 0.8s var(--ease-luxury);
+}
+
+.size_large { grid-column: span 2; min-height: 340px; }
+.size_medium { grid-column: span 1; }
+.size_small { grid-column: span 1; }
+
+.maisonCard:hover {
+  border-color: var(--gold);
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(201, 168, 76, 0.1);
+}
+
+.maisonCard:hover .maisonImage {
+  transform: scale(1.1);
+}
+
+.maisonOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.95) 0%, 
+    rgba(0, 0, 0, 0.6) 40%, 
+    rgba(0, 0, 0, 0.2) 70%,
+    transparent 100%
+  );
+  z-index: 1;
+  transition: opacity 0.5s;
+}
+
+.maisonCard:hover .maisonOverlay {
+  background: linear-gradient(
+    to top, 
+    rgba(0, 0, 0, 0.98) 0%, 
+    rgba(0, 0, 0, 0.7) 50%, 
+    transparent 100%
+  );
+}
+
+.maisonContent {
+  position: relative;
+  z-index: 2;
+  padding: 32px;
+  transform: translateY(10px);
+  transition: transform 0.4s var(--ease-luxury);
+}
+
+.maisonCard:hover .maisonContent {
+  transform: translateY(0);
+}
+
+.maisonName {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.maisonCat {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.8;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.maisonDetails {
+  font-size: 13px;
+  color: var(--white-60);
+  line-height: 1.5;
+  opacity: 0;
+  height: 0;
+  transition: all 0.4s;
+  overflow: hidden;
+}
+
+.maisonCard:hover .maisonDetails {
+  opacity: 1;
+  height: auto;
+  margin-top: 12px;
+}
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.serviceCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.4s var(--ease-luxury);
+}
+
+.serviceCard:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--gold-light);
+  transform: translateY(-4px);
+}
+
+.serviceIcon {
+  color: var(--gold);
+  font-size: 18px;
+  text-shadow: 0 0 10px rgba(201, 168, 76, 0.4);
+}
+
+.serviceTitle {
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  color: var(--white);
+}
+
+.serviceDesc {
+  font-size: 11px;
+  color: var(--white-40);
+  line-height: 1.4;
+}
+
+@media (max-width: 1024px) {
+  .maisonGrid { grid-template-columns: 1fr; }
+  .size_large { grid-column: span 1; }
+  .servicesGrid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+}

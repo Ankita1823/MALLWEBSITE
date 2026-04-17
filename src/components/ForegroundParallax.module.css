@@ -1,0 +1,52 @@
+.container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1002;
+  overflow: hidden;
+}
+
+.element1 {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  width: 150px;
+  height: 150px;
+}
+
+.diamondOutline {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(201, 168, 76, 0.1);
+  transform: rotate(45deg);
+}
+
+.element2 {
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  width: 300px;
+  height: 300px;
+}
+
+.lensFlare {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(201, 168, 76, 0.05) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+.element3 {
+  position: absolute;
+  bottom: 10%;
+  right: 15%;
+  width: 200px;
+  height: 200px;
+}
+
+.glowOrb {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(100, 80, 255, 0.03) 0%, transparent 70%);
+  filter: blur(60px);
+}

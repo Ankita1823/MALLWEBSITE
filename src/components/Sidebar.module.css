@@ -1,0 +1,157 @@
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  background: rgba(5, 5, 7, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 1100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+  transition: width 0.4s var(--ease-luxury);
+  overflow: hidden;
+}
+
+.sidebar:hover {
+  width: 240px;
+}
+
+.topLogo {
+  margin-bottom: 60px;
+  flex-shrink: 0;
+}
+
+.logoDiamond {
+  font-size: 20px;
+  color: var(--gold);
+  filter: drop-shadow(0 0 10px rgba(201, 168, 76, 0.4));
+}
+
+.counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 60px;
+  font-family: var(--font-display);
+}
+
+.current {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--gold-light);
+}
+
+.line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
+
+.total {
+  font-size: 12px;
+  color: var(--white-40);
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.chapterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chapterName {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  color: var(--white-20);
+  padding-left: 15px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+
+.sidebar:hover .chapterName {
+  opacity: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.navItem:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.dot {
+  font-size: 14px;
+  color: var(--white-20);
+  transition: color 0.3s, transform 0.3s;
+  flex-shrink: 0;
+  width: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.navItem.active .dot {
+  color: var(--gold);
+  transform: scale(1.2);
+}
+
+.label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  color: var(--white-40);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s, color 0.3s;
+}
+
+.sidebar:hover .label {
+  opacity: 1;
+}
+
+.navItem.active .label {
+  color: var(--white);
+}
+
+.bottom {
+  margin-top: auto;
+  flex-shrink: 0;
+}
+
+.scrollLabel {
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  color: var(--white-20);
+  writing-mode: vertical-lr;
+  text-transform: uppercase;
+}
+
+@media (max-width: 1024px) {
+  .sidebar {
+    display: none;
+  }
+}

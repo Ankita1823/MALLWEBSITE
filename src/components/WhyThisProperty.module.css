@@ -1,0 +1,128 @@
+.section {
+  background: var(--deep);
+  position: relative;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bgGrad {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 100% 0%, rgba(201,168,76,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 0% 100%, rgba(80,40,160,0.06) 0%, transparent 55%);
+}
+
+.headline {
+  margin-bottom: 20px;
+}
+
+.sub {
+  max-width: 580px;
+  margin-bottom: 60px;
+}
+
+.statsGrid {
+  margin-bottom: 32px;
+}
+
+.statCard {
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.statCard:hover::before {
+  opacity: 1;
+}
+
+.statSub {
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(250,250,250,0.35);
+  margin-top: 8px;
+}
+
+.featuresGrid {
+  margin-top: 0;
+}
+
+.featureCard {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 20px;
+  padding: 40px 32px;
+  border-radius: var(--radius-md);
+  background: var(--white-05);
+  border: 1px solid var(--white-10);
+  transition: border-color 0.4s, background 0.4s, transform 0.4s var(--ease-luxury);
+  overflow: hidden;
+  min-height: 280px;
+}
+
+.featureImageWrapper {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.featureImage {
+  object-fit: cover;
+  opacity: 0.2;
+  transition: transform 0.8s var(--ease-luxury), opacity 0.4s;
+}
+
+.featureCard:hover .featureImage {
+  transform: scale(1.1);
+  opacity: 0.35;
+}
+
+.featureOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 100%);
+  z-index: 1;
+}
+
+.featureContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.featureCard:hover {
+  background: var(--white-10);
+  border-color: rgba(201,168,76,0.25);
+  transform: translateY(-4px);
+}
+
+.featureIcon {
+  color: var(--gold);
+  font-size: 20px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.featureDesc {
+  margin-top: 8px;
+  font-size: 14px !important;
+}
