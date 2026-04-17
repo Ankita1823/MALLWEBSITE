@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./ThePulse.module.css";
 
 export default function ThePulse() {
   const [visitorCount, setVisitorCount] = useState(102432);
   const [pulse, setPulse] = useState(82);
+  const [chartBars, setChartBars] = useState<{ initialHeight: string }[]>([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -16,13 +17,16 @@ export default function ThePulse() {
         return Math.min(Math.max(next, 70), 98);
       });
     }, 2000);
-    return () => clearInterval(interval);
-  }, []);
 
-  const chartBars = useMemo(() => {
-    return [...Array(20)].map(() => ({
+    const generatedBars = [...Array(20)].map(() => ({
       initialHeight: `${20 + Math.random() * 80}%`
     }));
+    
+    setTimeout(() => {
+      setChartBars(generatedBars);
+    }, 0);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (

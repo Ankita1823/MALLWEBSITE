@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./AccessModal.module.css";
 
@@ -8,6 +8,8 @@ export default function AccessModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const handleToggle = useCallback(() => setIsOpen(prev => !prev), []);
 
   useEffect(() => {
     // Show after 10 seconds of interaction, or can be triggered by buttons
@@ -17,11 +19,10 @@ export default function AccessModal() {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleToggle = () => setIsOpen(!isOpen);
-
   // Expose toggle to window for easy access from other components
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       (window as any).toggleAccessModal = handleToggle;
     }
   }, [handleToggle]);

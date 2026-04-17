@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
@@ -23,7 +24,7 @@ export default function HotspotImage({ src, alt, hotspots }: HotspotImageProps) 
 
   return (
     <div className={styles.container}>
-      <img src={src} className={styles.image} alt={alt} />
+      <Image src={src} className={styles.image} alt={alt} fill sizes="100vw" />
       <div className={styles.overlay} />
 
       {hotspots.map((h, i) => (

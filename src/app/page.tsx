@@ -10,7 +10,6 @@ import AccessModal from "@/components/AccessModal";
 import UtilityPanel from "@/components/UtilityPanel";
 import Atmosphere from "@/components/Atmosphere";
 import ForegroundParallax from "@/components/ForegroundParallax";
-import PersonalizationBanner from "@/components/PersonalizationBanner";
 import OpeningHero from "@/components/OpeningHero";
 import WhyThisProperty from "@/components/WhyThisProperty";
 import RetailLuxury from "@/components/RetailLuxury";

@@ -1,18 +1,20 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import styles from "./Atmosphere.module.css";
 
 export default function Atmosphere() {
   const [mounted, setMounted] = useState(false);
+  const [orbs, setOrbs] = useState<{
+    initialX: string;
+    initialY: string;
+    animateTransform: string[];
+    duration: number;
+  }[]>([]);
 
   useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const orbs = useMemo(() => {
-    return [...Array(6)].map(() => ({
+    const generatedOrbs = [...Array(6)].map(() => ({
       initialX: Math.random() * 100 + "vw",
       initialY: Math.random() * 100 + "vh",
       animateTransform: [
@@ -22,6 +24,11 @@ export default function Atmosphere() {
       ],
       duration: 20 + Math.random() * 10
     }));
+    
+    setTimeout(() => {
+      setOrbs(generatedOrbs);
+      setMounted(true);
+    }, 0);
   }, []);
 
   if (!mounted) return <div className={styles.atmosphere} />;

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./ImageCardGallery.module.css";
 
@@ -56,7 +57,9 @@ export default function ImageCardGallery() {
             transition={{ delay: i * 0.2, duration: 0.8 }}
           >
             <div className={styles.cardInner}>
-              <img src={item.img} alt={item.title} className={styles.image} />
+              <div className={styles.imageWrapper}>
+                <Image src={item.img} alt={item.title} fill className={styles.image} sizes="(max-width: 768px) 100vw, 50vw" />
+              </div>
               <div className={styles.overlay} />
               <div className={styles.content}>
                 <span className={styles.subtitle}>{item.subtitle}</span>

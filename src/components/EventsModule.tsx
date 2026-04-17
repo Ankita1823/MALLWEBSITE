@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import FloatingVisual from "./FloatingVisual";
@@ -7,76 +8,31 @@ import styles from "./EventsModule.module.css";
 
 const PAST_EVENTS = [
   {
-    id: "expo",
-    name: "Global Brand Launches",
-    type: "Brand Activation",
-    year: "2024",
-    metric: "2M+ Impressions",
-    desc: "Host to the most-watched product unveils in the MENA region. Brands like Apple, Samsung, and Ferrari have debuted regional launches at The Dubai Mall.",
-    img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&q=80&w=600",
+    id: "vogue",
+    name: "Vogue Fashion Night Out",
+    year: "2023",
+    metric: "250,000+ Attendees",
+    type: "Fashion Gala",
+    img: "https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=800",
+    desc: "The largest fashion event in the Middle East, featuring 200+ global brands and live performances.",
   },
   {
-    id: "concerts",
-    name: "Live Concert Series",
-    type: "Entertainment",
+    id: "fountain",
+    name: "Emaar New Year's Eve",
     year: "2024",
-    metric: "50,000+ Attendance",
-    desc: "World-class performances on the Dubai Fountain Stage — an open-air concert venue unlike any other.",
-    img: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80&w=600",
+    metric: "1B+ Global Views",
+    type: "Global Spectacle",
+    img: "https://images.unsplash.com/photo-1545853332-147d68801d0a?auto=format&fit=crop&q=80&w=800",
+    desc: "The world's most-watched New Year's celebration, centered around the Burj Khalifa and Dubai Fountain.",
   },
   {
-    id: "fashion",
-    name: "Fashion Week Activations",
-    type: "Fashion & Culture",
-    year: "2024",
-    metric: "AED 80M Media Value",
-    desc: "Partner events with Dubai Fashion Week draw global press, buyers, and influencers to an unparalleled retail backdrop.",
-    img: "https://images.unsplash.com/photo-1539109132332-629263ef71d1?auto=format&fit=crop&q=80&w=600",
-  },
-  {
-    id: "art",
-    name: "Art Dubai @ The Mall",
-    type: "Art & Culture",
-    year: "2024",
-    metric: "300K Visitors",
-    desc: "Immersive art installations across 600,000 sq ft of prime public space, transforming the mall into a world-class urban gallery.",
-    img: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?auto=format&fit=crop&q=80&w=600",
-  },
-  {
-    id: "sports",
-    name: "Champions League Screenings",
-    type: "Sports",
-    year: "2024",
-    metric: "40,000 Fans",
-    desc: "Massive live sports screenings on the Dubai Fountain Plaza LED — transforming the outdoor space into an electric stadium atmosphere.",
-    img: "https://images.unsplash.com/photo-1540747913346-19e3adbb1733?auto=format&fit=crop&q=80&w=600",
-  },
-  {
-    id: "nyr",
-    name: "New Year's Eve Spectacle",
-    type: "Mega Event",
-    year: "2024",
-    metric: "Global #1 Trending",
-    desc: "The Dubai Mall–Burj Khalifa NYE show is the most-watched New Year's broadcast on the planet.",
-    img: "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?auto=format&fit=crop&q=80&w=600",
-  },
-  {
-    id: "food-festival",
-    name: "Dubai Food Festival",
-    type: "Culinary",
-    year: "2024",
-    metric: "1.5M+ Tastes",
-    desc: "A city-wide celebration of gastronomy, with The Dubai Mall serving as the central hub for exclusive pop-up dining and masterclasses.",
-    img: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&q=80&w=600",
-  },
-  {
-    id: "tech-expo",
-    name: "Next-Gen Tech Expo",
-    type: "Innovation",
-    year: "2024",
-    metric: "200+ Exhibitors",
-    desc: "The leading retail technology showcase in the region, where global tech giants reveal the future of immersive shopping.",
-    img: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600",
+    id: "gaming",
+    name: "Dubai Gaming Festival",
+    year: "2023",
+    metric: "50,000+ Gamers",
+    type: "E-Sports",
+    img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&q=80&w=800",
+    desc: "A massive multi-genre gaming event featuring professional tournaments and community arenas.",
   },
 ];
 
@@ -157,7 +113,9 @@ export default function EventsModule() {
               transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
               onClick={() => setSelectedEvent(selectedEvent === evt.id ? null : evt.id)}
             >
-              <img src={evt.img} alt={evt.name} className={styles.eventImg} />
+              <div className={styles.eventImgWrapper}>
+                <Image src={evt.img} alt={evt.name} fill className={styles.eventImg} sizes="(max-width: 768px) 100vw, 33vw" />
+              </div>
               <div className={styles.eventInfo}>
                 <div className={styles.eventTop}>
                   <span className={styles.eventType}>{evt.type}</span>

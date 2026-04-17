@@ -7,35 +7,7 @@ import BrandMarquee from "./BrandMarquee";
 import FloatingVisual from "./FloatingVisual";
 import MagneticButton from "./MagneticButton";
 import Counter from "./Counter";
-import { useSlide } from "@/context/SlideContext";
 import styles from "./RetailLuxury.module.css";
-
-const IMAGES = [
-  {
-    src: "/hero-dubai.png",
-    alt: "Dubai Mall Fountain Night",
-    delay: 1.2,
-    rotate: -4
-  },
-  {
-    src: "https://images.unsplash.com/photo-1490481651871-ab68624d5517?auto=format&fit=crop&q=80&w=800",
-    alt: "Fashion Avenue Luxury",
-    delay: 1.4,
-    rotate: 0
-  },
-  {
-    src: "https://images.unsplash.com/photo-1582650625119-3a31f8fa2699?auto=format&fit=crop&q=80&w=800",
-    alt: "The Grand Atrium",
-    delay: 1.6,
-    rotate: 4
-  }
-];
-
-const BRANDS = [
-  "Louis Vuitton", "Chanel", "Hermès", "Gucci", "Prada",
-  "Dior", "Bottega Veneta", "Saint Laurent", "Balenciaga", "Rolex",
-  "Cartier", "Tiffany & Co.", "Burberry", "Valentino", "Fendi",
-];
 
 const RETAIL_TIERS = [
   {
@@ -75,7 +47,6 @@ const RETAIL_TIERS = [
 export default function RetailLuxury() {
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-15%" });
-  const { setSlide } = useSlide();
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -185,8 +156,7 @@ export default function RetailLuxury() {
               transition={{ delay: 1.2 }}
             >
               <MagneticButton
-                variant="gold"
-                onClick={() => setSlide(9)}
+                className={styles.cta}
               >
                 Explore Leasing →
               </MagneticButton>

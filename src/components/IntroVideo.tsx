@@ -1,23 +1,21 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useSlide } from "@/context/SlideContext";
 import styles from "./IntroVideo.module.css";
 
 export default function IntroVideo() {
+  const { isIntroComplete, completeIntro } = useSlide();
   const [show, setShow] = useState(true);
-  const [videoLoaded, setVideoLoaded] = useState(false);
 
-  // Auto-unlock after 10 seconds if user doesn't click, or just wait for click
-  const { completeIntro } = useSlide();
+  if (isIntroComplete) return null;
 
   const handleEnter = () => {
     setShow(false);
     setTimeout(() => {
       completeIntro();
-      document.body.style.overflowY = "auto";
-    }, 1200); // Sync with exit animation
+    }, 1000);
   };
 
   return (
@@ -57,9 +55,9 @@ export default function IntroVideo() {
                 playsInline 
                 className={styles.video}
                 crossOrigin="anonymous"
-                onLoadedData={() => setVideoLoaded(true)}
+                onLoadedData={() => {}}
               >
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-top-view-of-a-luxury-highway-at-night-34562-large.mp4" type="video/mp4" />
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-car-headlights-and-tail-lights-on-a-highway-at-night-34563-large.mp4" type="video/mp4" />
               </video>
             </motion.div>
             <div className={styles.vignette} />

@@ -1,34 +1,33 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useSlide } from "@/context/SlideContext";
 import styles from "./Sidebar.module.css";
 
 const CHAPTERS = [
   { 
-    name: "THE VISION", 
+    name: "The Vision", 
     items: [
-      { id: "hero", label: "01 INTRO", icon: "⊹", slideIndex: 0 },
-      { id: "why", label: "02 VISION", icon: "⬡", slideIndex: 1 },
+      { id: "hero", label: "01 Intro", icon: "⊹", slideIndex: 0 },
+      { id: "why", label: "02 Vision", icon: "⬡", slideIndex: 1 },
     ]
   },
   { 
-    name: "THE EXPERIENCE", 
+    name: "The Experience", 
     items: [
-      { id: "retail", label: "03 RETAIL", icon: "⬢", slideIndex: 2 },
-      { id: "luxury", label: "04 LUXURY", icon: "✧", slideIndex: 3 },
-      { id: "dining", label: "05 DINING", icon: "◈", slideIndex: 4 },
-      { id: "experience", label: "06 LIFESTYLE", icon: "⟡", slideIndex: 5 },
+      { id: "retail", label: "03 Retail", icon: "⬢", slideIndex: 2 },
+      { id: "luxury", label: "04 Luxury", icon: "✧", slideIndex: 3 },
+      { id: "dining", label: "05 Dining", icon: "◈", slideIndex: 4 },
+      { id: "experience", label: "06 Lifestyle", icon: "⟡", slideIndex: 5 },
     ]
   },
   { 
-    name: "THE PARTNERSHIP", 
+    name: "The Partnership", 
     items: [
-      { id: "attractions", label: "07 MAGNETS", icon: "✦", slideIndex: 6 },
-      { id: "events", label: "08 STAGE", icon: "◆", slideIndex: 7 },
-      { id: "vision", label: "09 VISION", icon: "⊙", slideIndex: 8 },
-      { id: "contact", label: "10 PARTNER", icon: "✉", slideIndex: 9 },
+      { id: "attractions", label: "07 Magnets", icon: "✦", slideIndex: 6 },
+      { id: "events", label: "08 Stage", icon: "◆", slideIndex: 7 },
+      { id: "vision", label: "09 Future", icon: "⊙", slideIndex: 8 },
+      { id: "contact", label: "10 Partner", icon: "✉", slideIndex: 9 },
     ]
   }
 ];

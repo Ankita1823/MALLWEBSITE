@@ -8,7 +8,6 @@ import ReferencePopup from "./ReferencePopup";
 import ThePulse from "./ThePulse";
 import FloatingVisual from "./FloatingVisual";
 import Counter from "./Counter";
-import { Info } from "lucide-react";
 
 const STATS = [
   { value: <Counter value={100} suffix="M+" />, label: "Annual Visitors", sub: "More than New York City's Times Square" },

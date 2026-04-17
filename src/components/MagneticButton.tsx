@@ -1,45 +1,34 @@
 "use client";
 
-import { useState, useRef, ReactNode } from "react";
-import { motion, useSpring, useMotionValue, useTransform } from "framer-motion";
+import { useRef } from "react";
+import { motion, useSpring } from "framer-motion";
 import styles from "./MagneticButton.module.css";
-
-interface MagneticButtonProps {
-  children: ReactNode;
-  onClick?: () => void;
-  variant?: "gold" | "glass";
-  className?: string;
-}
 
 export default function MagneticButton({ 
   children, 
-  onClick, 
-  variant = "gold",
-  className = "" 
-}: MagneticButtonProps) {
-  const ref = useRef<HTMLButtonElement>(null);
+  className = "", 
+  onClick,
+  variant = "gold"
+}: { 
+  children: React.ReactNode, 
+  className?: string,
+  onClick?: () => void,
+  variant?: string
+}) {
+  const ref = useRef<HTMLDivElement>(null);
   
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const springConfig = { damping: 15, stiffness: 150 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
+  const x = useSpring(0, { stiffness: 150, damping: 15, mass: 0.1 });
+  const y = useSpring(0, { stiffness: 150, damping: 15, mass: 0.1 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!ref.current) return;
-    const { left, top, width, height } = ref.current.getBoundingClientRect();
-    const centerX = left + width / 2;
-    const centerY = top + height / 2;
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = ref.current?.getBoundingClientRect() || { left: 0, top: 0, width: 0, height: 0 };
     
-    // Calculate distance from center
-    const distanceX = e.clientX - centerX;
-    const distanceY = e.clientY - centerY;
+    const middleX = clientX - (left + width / 2);
+    const middleY = clientY - (top + height / 2);
     
-    // Magnetic pull strength (adjust as needed)
-    const strength = 0.4;
-    x.set(distanceX * strength);
-    y.set(distanceY * strength);
+    x.set(middleX * 0.35);
+    y.set(middleY * 0.35);
   };
 
   const handleMouseLeave = () => {
@@ -48,21 +37,15 @@ export default function MagneticButton({
   };
 
   return (
-    <motion.button
+    <motion.div
       ref={ref}
-      className={`${styles.button} ${styles[variant]} ${className}`}
+      className={`${styles.magnetic} ${className} ${variant ? styles[variant] : ""}`}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      style={{
-        x: springX,
-        y: springY,
-      }}
+      style={{ x, y }}
     >
-      <motion.div className={styles.content}>
-        {children}
-      </motion.div>
-      <div className={styles.shimmer} />
-    </motion.button>
+      {children}
+    </motion.div>
   );
 }

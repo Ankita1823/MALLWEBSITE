@@ -1,44 +1,42 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { useInView, motion, useSpring, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { useInView, animate } from "framer-motion";
 
 interface CounterProps {
   value: number;
   duration?: number;
-  delay?: number;
   decimals?: number;
   suffix?: string;
-  className?: string;
 }
 
-export default function Counter({ value, duration = 2, delay = 0, decimals = 0, suffix = "", className = "" }: CounterProps) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  
-  const count = useSpring(0, {
-    bounce: 0,
-    duration: duration * 1000,
-  });
-
-  const display = useTransform(count, (latest) => 
-    latest.toLocaleString(undefined, {
-      minimumFractionDigits: decimals,
-      maximumFractionDigits: decimals,
-    }) + suffix
-  );
+export default function Counter({ value, duration = 2, decimals = 0, suffix = "" }: CounterProps) {
+  const nodeRef = useRef<HTMLSpanElement>(null);
+  const inView = useInView(nodeRef, { once: true });
 
   useEffect(() => {
-    if (inView) {
-      setTimeout(() => {
-        count.set(value);
-      }, delay * 1000);
-    }
-  }, [inView, count, value, delay]);
+    if (!inView) return;
+
+    const node = nodeRef.current;
+    if (!node) return;
+
+    const controls = animate(0, value, {
+      duration,
+      onUpdate(v) {
+        node.textContent = v.toLocaleString(undefined, {
+          minimumFractionDigits: decimals,
+          maximumFractionDigits: decimals,
+        });
+      },
+    });
+
+    return () => controls.stop();
+  }, [value, inView, duration, decimals]);
 
   return (
-    <motion.span ref={ref} className={className}>
-      {display}
-    </motion.span>
+    <div>
+      <span ref={nodeRef}>0</span>
+      <span>{suffix}</span>
+    </div>
   );
 }
