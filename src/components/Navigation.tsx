@@ -12,8 +12,10 @@ const NAV_ITEMS = [
   { id: "retail", label: "Retail" },
   { id: "luxury", label: "Luxury" },
   { id: "dining", label: "Dining" },
+  { id: "experience", label: "Lifestyle" },
   { id: "attractions", label: "Attractions" },
   { id: "events", label: "Events" },
+  { id: "vision", label: "Vision" },
   { id: "contact", label: "Partner" },
 ];
 
